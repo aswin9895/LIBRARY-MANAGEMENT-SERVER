@@ -93,3 +93,18 @@ exports.updateBookCopies = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error });
     }
 }
+
+// incrementUpdatebookCopiesController
+exports.incrementUpdatebookCopiesController = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const book = await books.findById(id);
+        if (!book) return res.status(404).json({ message: "Book not found" });
+        if (book.copies <= 0) return res.status(400).json({ message: "No copies available" });
+        book.copies += 1;
+        await book.save();
+        res.status(200).json({ message: "Copies decremented successfully", book });
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error", error });
+    }
+}

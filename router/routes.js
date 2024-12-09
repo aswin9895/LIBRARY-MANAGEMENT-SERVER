@@ -56,6 +56,17 @@ router.put('/updatebookcopies/:id/update', jwtMiddleware, bookController.updateB
 // getissuedBooks - need of authorisation
 router.get('/getissuedbooks', jwtMiddleware, issuedBookController.getissuedBooksController)
 
+// removeissuedBooks - need of authorisation
+router.delete('/removeissuedbooks/:id/remove', jwtMiddleware, issuedBookController.removeissuedBooksController)
+
+// updateincrementBook
+router.put('/updateincrementbook/:id/update', jwtMiddleware, bookController.incrementUpdatebookCopiesController)
+
+// getsingleIssuedBook
+router.get('/getsingleissuedbook/:id/get', jwtMiddleware, issuedBookController.getsingleissuedBookController)
+
+
+
 
 
 module.exports = router
