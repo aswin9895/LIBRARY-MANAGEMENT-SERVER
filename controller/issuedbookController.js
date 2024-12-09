@@ -58,3 +58,16 @@ exports.getsingleissuedBookController = async (req, res) => {
         res.status(401).json(error)
     }
 }
+
+// getUserIssuedController
+exports.getUserIssuedController = async (req, res) => {
+    console.log("Inside getUserIssuedController");
+    const  {id}  =req.params
+    try {
+      const issuedbooksuser = await issuedBooks.find({studentId:id})
+    //   await issuedbooksuser.save()
+      res.status(200).json(issuedbooksuser)
+    } catch (error) {
+        res.status(401).json(error) 
+    }
+}

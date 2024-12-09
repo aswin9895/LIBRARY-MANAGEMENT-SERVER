@@ -65,7 +65,8 @@ router.put('/updateincrementbook/:id/update', jwtMiddleware, bookController.incr
 // getsingleIssuedBook
 router.get('/getsingleissuedbook/:id/get', jwtMiddleware, issuedBookController.getsingleissuedBookController)
 
-
+// getissuedbooksUser
+router.get('/getissuedbooksuser/:id/get', jwtMiddleware, issuedBookController.getUserIssuedController)
 
 
 
