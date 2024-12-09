@@ -35,7 +35,6 @@ exports.getBookController = async (req, res) => {
     } catch (error) {
         res.status(401).json(error)
     }
-    // res.status(200).json("recevied")    
 }
 // deleteBookController
 exports.deleteBookController = async (req, res) => {

@@ -25,7 +25,7 @@ router.delete('/removeuser/:id/remove', jwtMiddleware, userController.removeUser
 router.post('/addBook', jwtMiddleware, multerMiddleware.single("bookPic"), bookController.addBookController)
 
 // getBook - need of authorisation
-router.get('/getbook', jwtMiddleware, bookController.getBookController)
+router.get('/getbook', bookController.getBookController)
 
 // deleteBook - need of authorisation
 router.delete('/deletebook/:id/delete', jwtMiddleware, bookController.deleteBookController)
