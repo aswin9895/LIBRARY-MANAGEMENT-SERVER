@@ -5,6 +5,7 @@ const jwtMiddleware = require('../middlewares/jwtMiddleware')
 const multerMiddleware = require('../middlewares/multerMiddleware')
 const requestedBookController = require('../controller/requestedBookController')
 const issuedBookController = require('../controller/issuedbookController')
+const reccomendbookController = require('../controller/recommendedBookController')
 
 const router = new express.Router();
 
@@ -68,6 +69,13 @@ router.get('/getsingleissuedbook/:id/get', jwtMiddleware, issuedBookController.g
 // getissuedbooksUser
 router.get('/getissuedbooksuser/:id/get', jwtMiddleware, issuedBookController.getUserIssuedController)
 
+// recommendBook
+router.post('/recommendbook',jwtMiddleware, reccomendbookController.recommendBookController)
 
+// getallRecomendBooks
+router.get('/getallrecomendbooks',jwtMiddleware, reccomendbookController.getRecommendedBookController)
+
+// removeRecomendBook 
+router.delete('/removereccomendbook/:id/remove',jwtMiddleware, reccomendbookController.removeRecommendedBookController)
 
 module.exports = router
