@@ -40,7 +40,7 @@ exports.removeissuedBooksController = async (req, res) => {
     console.log("Inside removeissuedBooksController");
     const { id } = req.params
     try {
-        const deleteIssuedBook = await issuedBooks.findByIdAndDelete({_id:id})
+        const deleteIssuedBook = await issuedBooks.findByIdAndDelete({ _id: id })
         res.status(200).json(deleteIssuedBook)
     } catch (error) {
         res.status(401).json(error)
@@ -52,7 +52,7 @@ exports.getsingleissuedBookController = async (req, res) => {
     console.log("Inside getsingleissuedBookController");
     const { id } = req.params
     try {
-        const getIssuedBook = await issuedBooks.findById({_id:id})
+        const getIssuedBook = await issuedBooks.findById({ _id: id })
         res.status(200).json(getIssuedBook)
     } catch (error) {
         res.status(401).json(error)
@@ -62,12 +62,12 @@ exports.getsingleissuedBookController = async (req, res) => {
 // getUserIssuedController
 exports.getUserIssuedController = async (req, res) => {
     console.log("Inside getUserIssuedController");
-    const  {id}  =req.params
+    const { id } = req.params
     try {
-      const issuedbooksuser = await issuedBooks.find({studentId:id})
-    //   await issuedbooksuser.save()
-      res.status(200).json(issuedbooksuser)
+        const issuedbooksuser = await issuedBooks.find({ studentId: id })
+        //   await issuedbooksuser.save()
+        res.status(200).json(issuedbooksuser)
     } catch (error) {
-        res.status(401).json(error) 
+        res.status(401).json(error)
     }
 }

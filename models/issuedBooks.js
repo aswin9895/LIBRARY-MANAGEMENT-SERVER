@@ -45,4 +45,4 @@ const issuedBookSchema = new mongoose.Schema({
 
 const issuedBooks = mongoose.model('issuedBooks', issuedBookSchema)
 
-module.exports=issuedBooks
+module.exports = issuedBooks

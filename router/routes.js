@@ -70,12 +70,16 @@ router.get('/getsingleissuedbook/:id/get', jwtMiddleware, issuedBookController.g
 router.get('/getissuedbooksuser/:id/get', jwtMiddleware, issuedBookController.getUserIssuedController)
 
 // recommendBook
-router.post('/recommendbook',jwtMiddleware, reccomendbookController.recommendBookController)
+router.post('/recommendbook', jwtMiddleware, reccomendbookController.recommendBookController)
 
 // getallRecomendBooks
-router.get('/getallrecomendbooks',jwtMiddleware, reccomendbookController.getRecommendedBookController)
+router.get('/getallrecomendbooks', jwtMiddleware, reccomendbookController.getRecommendedBookController)
 
 // removeRecomendBook 
-router.delete('/removereccomendbook/:id/remove',jwtMiddleware, reccomendbookController.removeRecommendedBookController)
+router.delete('/removereccomendbook/:id/remove', jwtMiddleware, reccomendbookController.removeRecommendedBookController)
+
+// updateProfile
+router.put('/updateProfile/:id/update', jwtMiddleware, multerMiddleware.single("profilePic"), userController.profileUpdateController)
+
 
 module.exports = router

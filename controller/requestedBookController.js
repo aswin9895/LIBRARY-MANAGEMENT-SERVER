@@ -6,11 +6,11 @@ exports.requestBookController = async (req, res) => {
     console.log("inside requestBookController");
     const { bookId, title, author, publisher, bookPic, copies, studentName, studentBranch, studentId } = req.body
     console.log(req.body);
-    const existingIssued = await issuedBooks.findOne({bookId,studentId})
+    const existingIssued = await issuedBooks.findOne({ bookId, studentId })
     const existingRequest = await requestedBooks.findOne({ bookId, studentId })
     if (existingIssued) {
         res.status(406).json("Book alredy issued to you!!!")
-    }else{
+    } else {
         if (existingRequest) {
             return res.status(406).json("Book is already requested by you. Please Wait For the Admin's Response!!!")
         } else {

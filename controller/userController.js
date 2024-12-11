@@ -7,14 +7,14 @@ exports.registerUserController = async (req, res) => {
     console.log("inside registerUser");
     console.log(req.body);
 
-    const { name, email, phn, password, branch, admnum, admyear, role } = req.body
+    const { name, email, phn, password, branch, admnum, admyear, role, profilePic } = req.body
     try {
         const existingUser = await users.findOne({ email }) || await users.findOne({ phn }) || await users.findOne({ admnum })
         if (existingUser) {
             res.status(406).json("Alredy Existing User... Please Login!!!")
         } else {
             const newUser = new users({
-                name, email, phn, password, branch, admnum, admyear, role: "student"
+                name, email, phn, password, branch, admnum, admyear, role: "student", profilePic: ""
             })
             await newUser.save()
             res.status(200).json(newUser)
@@ -74,4 +74,19 @@ exports.removeUserController = async (req, res) => {
         res.status(401).json(error)
     }
 
+}
+
+// profileUpdateController
+exports.profileUpdateController = async (req, res) => {
+    console.log("inside profileUpdateController");
+    const { name, email, phn, branch, admnum, admyear, profilePic } = req.body
+    const uploadPic = req.file ? req.file.filename : profilePic
+    const { id } = req.params
+    try {
+        const updateUser = await users.findByIdAndUpdate({ _id: id }, { name, email, phn, branch, admnum, admyear, profilePic: uploadPic }, { new: true })
+        await updateUser.save()
+        res.status(200).json(updateUser)
+    } catch (error) {
+        res.status(401).json(error)
+    }
 }

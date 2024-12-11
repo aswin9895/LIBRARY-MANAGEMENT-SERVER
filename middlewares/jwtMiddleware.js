@@ -8,14 +8,14 @@ const jwtMiddleware = (req, res, next) => {
         try {
             const jwtResponse = jwt.verify(token, process.env.JWTPASSWORD);
             console.log(jwtResponse);
-            req.userId=jwtResponse.userId
+            req.userId = jwtResponse.userId
             next()
         } catch (error) {
             res.status(401).json("Authoriztion Failed... Please Login!!!")
         }
     } else {
         res.status(404).json("Authorization Failed... Token is Missing!!!")
-    }   
+    }
 }
 
-module.exports=jwtMiddleware
+module.exports = jwtMiddleware
