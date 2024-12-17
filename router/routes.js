@@ -6,6 +6,7 @@ const multerMiddleware = require('../middlewares/multerMiddleware')
 const requestedBookController = require('../controller/requestedBookController')
 const issuedBookController = require('../controller/issuedbookController')
 const reccomendbookController = require('../controller/recommendedBookController')
+const studentController = require('../controller/studentController')
 
 const router = new express.Router();
 
@@ -80,6 +81,11 @@ router.delete('/removereccomendbook/:id/remove', jwtMiddleware, reccomendbookCon
 
 // updateProfile
 router.put('/updateProfile/:id/update', jwtMiddleware, multerMiddleware.single("profilePic"), userController.profileUpdateController)
+
+// updations--------------------
+
+// getallStudents
+router.get('/getallstudents', studentController.getStudentController)
 
 
 module.exports = router
